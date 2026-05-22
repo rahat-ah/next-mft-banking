@@ -1,10 +1,10 @@
 "use client"
 
-import React from 'react'
+import Image from 'next/image'
 
 function HeroSection() {
   return (
-    <section className="bg-linear-to-br from-blue-50 via-orange-50 to-blue-100 min-h-[80vh] flex items-center">
+    <section className="bg-linear-to-br from-blue-50 via-orange-50 to-blue-100 min-h-[70vh] flex items-center">
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2">
             <h1 className="text-4xl md:text-5xl font-bold text-blue-700 leading-tight mb-4">
@@ -37,11 +37,14 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="lg:w-1/2">
-            <img
+          <div className="lg:w-1/2 w-full h-96 relative">
+            <Image
               src="https://res.cloudinary.com/dznypggdx/image/upload/v1768719148/file_00000000696871fdb65d200119b9597d_o9rinv.png"
               alt="Banking Illustration"
-              className="rounded-2xl shadow-xl"
+              width={700}
+              height={700}
+              priority
+              className="w-full h-auto rounded-2xl shadow-xl"
             />
           </div>
         </div>

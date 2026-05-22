@@ -15,7 +15,7 @@ function LandingNavbar() {
               }}
               className="flex items-center gap-2 cursor-pointer"
             >
-              <img src="/vercel.svg" alt="logo image" className="w-10 h-10" />
+              <img src="/mft-logo.svg" alt="logo image" className="w-10 h-10" />
               <h1 className="text-xl font-bold text-blue-700">
                 MFT<span className="text-orange-500">Banking</span>
               </h1>
