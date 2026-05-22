@@ -4,7 +4,8 @@ import { FaUsers, FaEnvelope, FaPhone } from "react-icons/fa"
 function ContactUs() {
   return (
     <section 
-      className="bg-blue-50 py-20">
+      className="bg-blue-50 py-20"
+      id="contact-us">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl font-bold text-blue-700 mb-6">Contact Us</h2>

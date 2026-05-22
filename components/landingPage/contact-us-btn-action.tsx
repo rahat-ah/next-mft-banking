@@ -6,7 +6,11 @@ function ContactUsBtnAction() {
   return (
     <button
       onClick={() => {
-        router.push("/contact-us");
+        const section = document.getElementById("contact-us");
+
+        section?.scrollIntoView({
+          behavior: "smooth",
+        });
         console.log("contact us button clicked !");
       }}
       className="px-6 py-3 rounded-xl border border-orange-400 text-orange-500 font-medium hover:bg-orange-50 transition"

@@ -6,7 +6,7 @@ function GetStartedBtnAction() {
   return (
     <button
       onClick={() => {
-        router.push("/banking-register");
+        router.push("/register");
         console.log("register button clicked !");
       }}
       className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
