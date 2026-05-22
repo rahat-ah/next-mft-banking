@@ -1,6 +1,6 @@
-"use client"
-
 import Image from 'next/image'
+import GetStartedBtnAction from './get-started-btn-action'
+import ContactUsBtnAction from './contact-us-btn-action'
 
 function HeroSection() {
   return (
@@ -15,25 +15,8 @@ function HeroSection() {
               in one secure dashboard.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => {
-                // navigate("/banking-register")
-                // setLoginFormOpen(true)
-                console.log("register button clicked !")
-              }}
-                className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
-              >
-                Get Started
-              </button>
-              <button
-                onClick={() => {
-                    // contactUsRef.current?.scrollIntoView({ behavior: "smooth" });
-                    console.log("contact us button clicked !")
-                }}
-                className="px-6 py-3 rounded-xl border border-orange-400 text-orange-500 font-medium hover:bg-orange-50 transition"
-              >
-                Contact us
-              </button>
+              <GetStartedBtnAction />
+              <ContactUsBtnAction />
             </div>
           </div>
 
