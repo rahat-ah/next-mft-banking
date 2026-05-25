@@ -9,13 +9,22 @@ function VerifyOtpPopup({email , mobileNumber ,onClose, setIsEmailVerified}:{
 }) {
 
     const [otp, setOtp] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleVerifyClick = () => {
+        setLoading(true);
+        console.log("Verifying OTP:", otp);
+        
+        setIsEmailVerified(true);
+        setLoading(false);
+        onClose();
+    }
     
   return (
     <div className="fixed z-50 flex items-center justify-center inset-0">
       {/* Background Blur */}
       <div
         className="absolute inset-0 bg-transparent bg-opacity-80 backdrop-blur-sm"
-        onClick={onClose} // close popup if click outside
       ></div>
 
       {/* Popup Card */}
@@ -29,7 +38,7 @@ function VerifyOtpPopup({email , mobileNumber ,onClose, setIsEmailVerified}:{
           {/* <span className="font-medium text-orange-500">{formatTime(timeLeft)}</span> */}
         </p>
 
-        <p className="text-sm text-gray-600 mb-4 text-left">
+        <p className="text-sm text-gray-600 mb-1 text-left">
           Email: <span className="font-medium text-orange-500">{email}</span>
         </p>
 
@@ -51,16 +60,15 @@ function VerifyOtpPopup({email , mobileNumber ,onClose, setIsEmailVerified}:{
         
         {/* Verify Button */}
         <button
-        //   onClick={handleVerifyClick}
-        //   disabled={verifying}
+           onClick={handleVerifyClick}
+           disabled={loading}
           className={`w-full px-4 py-2 rounded-xl text-white font-medium transition ${
-            // verifying
-                false
+            loading
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-blue-600 hover:bg-blue-700"
           }`}
         >
-          {/* {verifying ? "Verifying..." : "Verify OTP"} */}
+          {otp ? "Verifying..." : "Verify OTP"}
         </button>
 
         {/* Close Link */}

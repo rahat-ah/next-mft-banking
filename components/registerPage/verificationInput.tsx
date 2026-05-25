@@ -1,5 +1,6 @@
 "use client";
 import { useFormik } from "formik";
+import { MdOutlineVerifiedUser } from "react-icons/md";
 import VerifyOtpPopup from "./verifyOtpPopup";
 import { useState } from "react";
 
@@ -53,18 +54,24 @@ function VerificationInput() {
         required
         className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <button
-        type="button"
-        onClick={() => handleSubmit()}
-        disabled={values.email === "" || values.mobileNumber === ""}
-        className={`mt-2 px-4 py-2 rounded-lg font-medium text-white ${
-          values.email === "" || values.mobileNumber === ""
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-green-600 hover:bg-green-700"
-        }`}
-      >
-        Send OTP
-      </button>
+      {isEmailVerified ? (
+        <button className="mt-2 px-4 py-2 rounded-lg font-medium text-blue-700 bg-blue-400 cursor-not-allowed flex items-center justify-center gap-2">
+          OTP Verified <MdOutlineVerifiedUser />
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => handleSubmit()}
+          disabled={values.email === "" || values.mobileNumber === ""}
+          className={`mt-2 px-4 py-2 rounded-lg font-medium text-white ${
+            values.email === "" || values.mobileNumber === ""
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-600 hover:bg-green-700"
+          }`}
+        >
+          Send OTP
+        </button>
+      )}
     </>
   );
 }
