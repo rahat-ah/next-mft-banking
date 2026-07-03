@@ -1,5 +1,5 @@
 import ToHomeRegiAction from "@/components/registerPage/toHomeRegiAction";
-import VerifyOtpComponent from "@/components/registerPage/verifyOtpComponent";
+import SendOtpComponent from "@/components/registerPage/verifyOtpComponent";
 
 
 async function VerifyOtpPopup({
@@ -26,12 +26,8 @@ params
         <h2 className="text-2xl font-bold text-blue-700 mb-2 text-center">
           Verify Email with OTP
         </h2>
-        <p className="text-sm text-gray-500 mb-4 text-center">
-          OTP expires in:{" "}
-          {/* <span className="font-medium text-orange-500">{formatTime(timeLeft)}</span> */}
-        </p>
 
-        <VerifyOtpComponent id={id} />
+        <SendOtpComponent id={id} />
 
         {/* Close Link */}
         <ToHomeRegiAction />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LandingNavbar from "@/components/landingPage/landing-navbar";
+import ToastProvider from "@/components/utills/toastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
     >
       <body >
         <LandingNavbar  />
+        <ToastProvider />
         {children}</body>
     </html>
   );

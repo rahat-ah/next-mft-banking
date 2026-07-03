@@ -1,10 +1,13 @@
 import ToLoginNavigate from "@/components/registerPage/toLoginNavAction";
 import registerFormAction from "./register.action";
+import { ToastContainer, toast } from 'react-toastify';
+import SubmitBtnComponent from "@/components/registerPage/submitBtnComponent";
 
 function registerPage() {
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-50 via-orange-50 to-blue-100 flex items-center justify-center">
       <div className="bg-white rounded-2xl shadow-xl w-full xs:max-w-xs sm:max-w-md p-8">
+        
         <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">
           Officer Registration
         </h2>
@@ -54,6 +57,7 @@ function registerPage() {
             <option value="manager">Manager</option>
             <option value="loan_officer">Loan Officer</option>
             <option value="ceo">CEO</option>
+            <option value="admin">Admin</option>
           </select>
 
           <input
@@ -63,21 +67,14 @@ function registerPage() {
             required
             className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
-
-          <button
-            type="submit"
-            className={`mt-4 px-6 py-3 rounded-xl  text-white bg-blue-600 ${
-              false ? "bg-gray-400 cursor-not-allowed" : " hover:bg-blue-700 "
-            }font-medium transition`}
-          >
-            Register
-          </button>
+        <SubmitBtnComponent />
         </form>
 
         <p className="mt-4 text-gray-500 text-sm text-center">
           Already have an account? <ToLoginNavigate />
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 }
