@@ -1,28 +1,49 @@
-"use client";
+"use server";
 
 import axios from "axios";
-import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 async function loginFormAction(formData: FormData) {
   console.log("Form data received in action:", formData);
 
-  try {
-    const payload = {
-      email: formData.get("email"),
-      mobile: formData.get("mobile"),
-      password: formData.get("password"),
-      secretCode: formData.get("secretCode") || formData.get("adminCode"),
-    };
+  const data = Object.fromEntries(formData) as Record<string, FormDataEntryValue>;
 
+  // Pick whichever code exists and rename it to secretCode
+  const secretCode = data.officeCode || data.adminCode;
+
+  // Remove old keys and create final payload
+  const payload: Record<string, FormDataEntryValue> = {
+    ...data,
+    secretCode,
+  };
+
+  delete payload.officeCode;
+  delete payload.adminCode;
+
+  console.log(payload)
+
+  let redirectPath: string | null = null;
+
+ try {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/signin`,
-      payload, {withCredentials: true}
+      payload,
+      { withCredentials: true },
     );
 
-    console.log("Login response:", response.data);
+    if (response.data.success) {
+      console.log("Login successful:", response.data);
+      redirect(`/home`);
+    } else if(response.data?.isVerified === false){
+      redirectPath = `/verify-otp/${response.data.id}`;
+    }else{
+      console.log(response.data)
+    }
   } catch (error) {
-    toast.error("An error occurred . Please try again.");
     console.log(error);
+  }
+  if (redirectPath) {
+    redirect(redirectPath);
   }
 }
 
